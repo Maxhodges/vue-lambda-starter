@@ -13,6 +13,9 @@
     <p>
       <button @click="callLambda">Get Message from Lambda</button>
     </p>
+    <ul>
+      <li v-for="rate in shippingRates" :key="rate.method">{{rate.countryNameEnglish}} {{rate.method}} Rate={{rate.rate}} JPY MinWeight={{rate.minWeight}}, MaxWeight={{rate.maxWeight}}</li><br>
+    </ul>
 
   </div>
 
@@ -28,7 +31,8 @@ export default {
     return {
       lambdaMsg: "Click to get a message",
       country: "",
-      grams: ""
+      grams: "",
+      shippingRates: []
     };
   },
   methods: {
@@ -40,7 +44,7 @@ export default {
       )
         .then(response => response.json())
         .then(json => {
-          this.lambdaMsg = json;
+          this.shippingRates = json;
         });
     }
   }
@@ -52,14 +56,7 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: #42b983;
 }
