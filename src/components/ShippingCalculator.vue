@@ -13,9 +13,23 @@
     <p>
       <button @click="callLambda">Get Message from Lambda</button>
     </p>
-    <ul>
-      <li v-for="rate in shippingRates" :key="rate.method">{{rate.countryNameEnglish}} {{rate.method}} Rate={{rate.rate}} JPY MinWeight={{rate.minWeight}}, MaxWeight={{rate.maxWeight}}</li><br>
-    </ul>
+
+    <table>
+      <tr>
+        <th>Country</th>
+        <th>Method</th>
+        <th>Rate</th>
+        <th>minWeight</th>
+        <th>maxWeight</th>
+      </tr>
+      <tr v-for="rate in shippingRates" :key="rate.method">
+        <td>{{rate.countryNameEnglish}}</td>
+        <td>{{rate.method}}</td>
+        <td>{{rate.rate}}</td>
+        <td>{{rate.minWeight}}</td>
+        <td>{{rate.maxWeight}}</td>
+      </tr>
+    </table>
 
   </div>
 
