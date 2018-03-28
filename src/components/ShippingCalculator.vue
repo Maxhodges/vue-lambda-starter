@@ -35,7 +35,7 @@ export default {
     callLambda() {
       fetch(
         `https://6dmd5ym6r1.execute-api.us-east-2.amazonaws.com/latest/rate?country=${
-          this.country
+          this.country.toUpperCase
         }&weight=${this.grams}`
       )
         .then(response => response.json())
