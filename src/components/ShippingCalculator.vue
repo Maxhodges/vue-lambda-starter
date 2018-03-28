@@ -1,25 +1,18 @@
 <template>
-  <div class="hello">
+  <div class="">
     <h1>{{ msg }}</h1>
     <p>{{ lambdaMsg }}</p>
     <p>
       <button @click="callLambda">Get Message from Lambda</button>
     </p>
 
-    <shipping-calculator></shipping-calculator>
   </div>
 
 </template>
 
 <script>
-import ShippingCalculator from "./ShippingCalculator.vue";
-
 export default {
   name: "HelloWorld",
-  components: {
-    "shipping-calculator": ShippingCalculator
-  },
-
   props: {
     msg: String
   },
@@ -28,10 +21,12 @@ export default {
   },
   methods: {
     callLambda() {
-      fetch("/.netlify/functions/hello")
+      fetch(
+        "https://6dmd5ym6r1.execute-api.us-east-2.amazonaws.com/latest/rate?country=AU&weight=1000"
+      )
         .then(response => response.json())
         .then(json => {
-          this.lambdaMsg = json.msg;
+          this.lambdaMsg = json;
         });
     }
   }
