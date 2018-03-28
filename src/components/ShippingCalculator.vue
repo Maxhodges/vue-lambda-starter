@@ -2,16 +2,20 @@
   <div class="">
     <h1>{{ msg }}</h1>
     <p>{{ lambdaMsg }}</p>
-    <label>
-      Country (ISO-2)
-      <input type="text" v-model="country">
-    </label>
-    <label>
-      Weight (grams)
-      <input type="text" v-model="grams">
-    </label>
+    <div>
+      <label>
+        Country (ISO-2)
+        <input type="text" v-model="country">
+      </label>
+    </div>
+    <div>
+      <label>
+        Weight (grams)
+        <input type="text" v-model="grams">
+      </label>
+    </div>
     <p>
-      <button @click="callLambda">Get Message from Lambda</button>
+      <button @click="callLambda">Get Rates from Lambda</button>
     </p>
 
     <table>
@@ -44,8 +48,8 @@ export default {
   data() {
     return {
       lambdaMsg: "Click to get a message",
-      country: "",
-      grams: "",
+      country: "tr",
+      grams: "500",
       shippingRates: []
     };
   },
